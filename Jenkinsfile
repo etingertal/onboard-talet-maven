@@ -31,6 +31,16 @@ pipeline {
                 )
             }
         }
+        stage ('Publish BuildInfo') {
+            steps {
+                rtPublishBuildInfo (
+                        captureEnv: true
+                )
+                rtPublishBuildInfo (
+                        serverId: env.ARTIFACTORY_SERVER_ID
+                )
+            }
+        }
         stage('Build') {
             steps {
                 rtMavenRun (
