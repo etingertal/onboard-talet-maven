@@ -10,6 +10,9 @@ node {
 //    stage ('Clone') {
 //        git url: 'https://github.com/jfrog/project-examples.git'
 //    }
+    stage ('Checkout'){
+        checkout scm
+    }
 
     stage ('Artifactory configuration') {
         rtMaven.tool = 'mvn-3.6.3' // Tool name from Jenkins configuration
