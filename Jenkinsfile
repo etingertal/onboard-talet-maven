@@ -1,6 +1,6 @@
-def server = Artifactory.server 'ob-arti'
-def rtMaven = Artifactory.newMavenBuild()
-def buildInfo
+//def server = Artifactory.server 'ob-arti'
+//def rtMaven = Artifactory.newMavenBuild()
+//def buildInfo
 
 node {
     def server = Artifactory.server 'ob-arti'
