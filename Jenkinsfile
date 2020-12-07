@@ -33,7 +33,7 @@ pipeline {
         }
         stage ('Publish BuildInfo') {
             steps {
-                rtPublishBuildInfo (
+                rtBuildInfo (
                         captureEnv: true
                 )
                 rtPublishBuildInfo (
