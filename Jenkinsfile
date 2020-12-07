@@ -1,3 +1,7 @@
+def server = Artifactory.server 'ob-arti'
+def rtMaven = Artifactory.newMavenBuild()
+def buildInfo
+
 pipeline {
     agent {
         docker {
@@ -6,12 +10,19 @@ pipeline {
         }
     }
     stages {
+        stage ('Artifactory configuration') {
+            rtMaven.tool = 'mvn-3.6.3' // Tool name from Jenkins configuration
+            rtMaven.deployer releaseRepo: 'libs-release-local', snapshotRepo:'libs-snapshot-local', server: server
+            rtMaven.resolver releaseRepo: 'libs-release', snapshotRepo:'libs-snapshot', server: server
+            buildInfo = Artifactory.newBuildInfo()
+        }
         stage('Build') {
             steps {
-                sh 'mvn -B -DskipTests clean package'
+                rtMaven.run goals: '-B -DskipTests clean package', buildInfo: buildInfo
+//                sh 'mvn -B -DskipTests clean package'
             }
         }
-        stage('Test') {
+        stage('Unit Test') {
             steps {
                 sh 'mvn test'
             }
