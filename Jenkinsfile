@@ -11,10 +11,10 @@ pipeline {
     }
     environment {
         ARTIFACTORY_SERVER_ID = 'ob-arti'
-        ARTIFACTORY_DEPLOYER_RELEASE_REPO = 'libs-release-local'
-        ARTIFACTORY_DEPLOYER_SNAPSHOT_REPO = 'libs-release-local'
-        ARTIFACTORY_RESOLVER_RELEASE_REPO = 'libs-release'
-        ARTIFACTORY_RESOLVER_SNAPSHOT_REPO = 'libs-release'
+        ARTIFACTORY_DEPLOYER_RELEASE_REPO = 'onboard-repo-local'
+        ARTIFACTORY_DEPLOYER_SNAPSHOT_REPO = 'onboard-repo-local'
+        ARTIFACTORY_RESOLVER_RELEASE_REPO = 'onboard-repo-virt'
+        ARTIFACTORY_RESOLVER_SNAPSHOT_REPO = 'onboard-repo-virt'
 //        MAVEN_HOME = '/usr/bin/mvn'
     }
     stages {
