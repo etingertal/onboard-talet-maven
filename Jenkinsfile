@@ -20,7 +20,7 @@ node {
 
     stage ('Exec Maven') {
         docker.image('maven:3.6.3-adoptopenjdk-11').inside('-v /root/.m2:/root/.m2') {
-            rtMaven.run goals: '-B -DskipTests clean package', buildInfo: buildInfo
+            rtMaven.run pom: 'pom.xml', goals: '-B -DskipTests clean package', buildInfo: buildInfo
         }
     }
 
