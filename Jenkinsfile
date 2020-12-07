@@ -1,7 +1,3 @@
-//def server = Artifactory.server 'ob-arti'
-//def rtMaven = Artifactory.newMavenBuild()
-//def buildInfo
-
 pipeline {
     agent {
         docker {
@@ -15,7 +11,7 @@ pipeline {
         ARTIFACTORY_DEPLOYER_SNAPSHOT_REPO = 'onboard-repo-local'
         ARTIFACTORY_RESOLVER_RELEASE_REPO = 'onboard-repo-virt'
         ARTIFACTORY_RESOLVER_SNAPSHOT_REPO = 'onboard-repo-virt'
-//        MAVEN_HOME = '/usr/bin/mvn'
+        MAVEN_HOME = '/usr/share/maven' // Need to define maven home of the docker image
     }
     stages {
         stage ('Artifactory configuration') {
@@ -36,14 +32,8 @@ pipeline {
             }
         }
         stage('Build') {
-            environment {
-                // If your using the official maven image, these are probably where it puts it
-                MAVEN_HOME = '/usr/share/maven'
-//                JAVA_HOME= '/opt/java/openjdk'
-            }
             steps {
                 rtMavenRun (
-//                        tool: "mvn-3.6.3", // Tool name from Jenkins configuration
                         pom: 'pom.xml',
                         goals: '-B -DskipTests clean package',
                         deployerId: "MAVEN_DEPLOYER",
@@ -51,15 +41,20 @@ pipeline {
                 )
             }
         }
-//        stage('Unit Test') {
-//            steps {
-//                sh 'mvn test'
-//            }
-//            post {
-//                always {
-//                    junit 'target/surefire-reports/*.xml'
-//                }
-//            }
-//        }
+        stage('Unit Test') {
+            steps {
+                rtMavenRun (
+                        pom: 'pom.xml',
+                        goals: 'test',
+                        deployerId: "MAVEN_DEPLOYER",
+                        resolverId: "MAVEN_RESOLVER"
+                )
+            }
+            post {
+                always {
+                    junit 'target/surefire-reports/*.xml'
+                }
+            }
+        }
     }
 }
