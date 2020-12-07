@@ -7,13 +7,6 @@ node {
     def rtMaven = Artifactory.newMavenBuild()
     def buildInfo
 
-//    stage ('Clone') {
-//        git url: 'https://github.com/jfrog/project-examples.git'
-//    }
-    stage ('Checkout'){
-        checkout scm
-    }
-
     stage ('Artifactory configuration') {
         rtMaven.tool = 'mvn-3.6.3' // Tool name from Jenkins configuration
         rtMaven.deployer releaseRepo: 'libs-release-local', snapshotRepo:'libs-snapshot-local', server: server
@@ -23,7 +16,9 @@ node {
 
     stage ('Exec Maven') {
         docker.image('maven:3.6.3-adoptopenjdk-11').inside('-v /root/.m2:/root/.m2') {
-            rtMaven.run pom: 'pom.xml', goals: '-B -DskipTests clean package', buildInfo: buildInfo
+            withEnv(['JAVA_HOME=/opt/java/openjdk']) {
+                rtMaven.run pom: 'pom.xml', goals: '-B -DskipTests clean package', buildInfo: buildInfo
+            }
         }
     }
 
