@@ -37,7 +37,7 @@ pipeline {
             steps {
                 rtMavenRun (
                         tool: "mvn-3.6.3", // Tool name from Jenkins configuration
-                        pom: 'maven-example/pom.xml',
+                        pom: 'pom.xml',
                         goals: '-B -DskipTests clean package',
                         deployerId: "MAVEN_DEPLOYER",
                         resolverId: "MAVEN_RESOLVER"
