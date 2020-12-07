@@ -9,27 +9,29 @@ pipeline {
             args '-v /root/.m2:/root/.m2'
         }
     }
+    environment {
+        ARTIFACTORY_SERVER_ID = 'ob-arti'
+        ARTIFACTORY_DEPLOYER_RELEASE_REPO = 'libs-release-local'
+        ARTIFACTORY_DEPLOYER_SNAPSHOT_REPO = 'libs-release-local'
+        ARTIFACTORY_RESOLVER_RELEASE_REPO = 'libs-release'
+        ARTIFACTORY_RESOLVER_SNAPSHOT_REPO = 'libs-release'
+//        MAVEN_HOME = '/usr/bin/mvn'
+    }
     stages {
         stage ('Artifactory configuration') {
             steps {
-                rtServer (
-                        id: "ob-arti-server",
-                        url: "http://35.242.242.155:8082/artifactory",
-                        credentialsId: "talet-ob-artifactory"
-                )
-
-                rtMavenDeployer (
+                rtMavenDeployer(
                         id: "MAVEN_DEPLOYER",
-                        serverId: "ob-arti-server",
-                        releaseRepo: "libs-release-local",
-                        snapshotRepo: "libs-snapshot-local"
+                        serverId: env.ARTIFACTORY_SERVER_ID,
+                        releaseRepo: env.ARTIFACTORY_DEPLOYER_RELEASE_REPO,
+                        snapshotRepo: env.ARTIFACTORY_DEPLOYER_SNAPSHOT_REPO
                 )
 
-                rtMavenResolver (
+                rtMavenResolver(
                         id: "MAVEN_RESOLVER",
-                        serverId: "ob-arti-server",
-                        releaseRepo: "libs-release",
-                        snapshotRepo: "libs-snapshot"
+                        serverId: env.ARTIFACTORY_SERVER_ID,
+                        releaseRepo: env.ARTIFACTORY_RESOLVER_RELEASE_REPO,
+                        snapshotRepo: env.ARTIFACTORY_RESOLVER_SNAPSHOT_REPO
                 )
             }
         }
@@ -37,11 +39,11 @@ pipeline {
             environment {
                 // If your using the official maven image, these are probably where it puts it
                 MAVEN_HOME = '/usr/share/maven'
-                JAVA_HOME= '/opt/java/openjdk'
+//                JAVA_HOME= '/opt/java/openjdk'
             }
             steps {
                 rtMavenRun (
-                        tool: "mvn-3.6.3", // Tool name from Jenkins configuration
+//                        tool: "mvn-3.6.3", // Tool name from Jenkins configuration
                         pom: 'pom.xml',
                         goals: '-B -DskipTests clean package',
                         deployerId: "MAVEN_DEPLOYER",
