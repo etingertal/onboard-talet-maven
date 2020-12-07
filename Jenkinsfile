@@ -34,6 +34,11 @@ pipeline {
             }
         }
         stage('Build') {
+            environment {
+                // If your using the official maven image, these are probably where it puts it
+                MAVEN_HOME = '/usr/share/maven'
+                JAVA_HOME= '/opt/java/openjdk'
+            }
             steps {
                 rtMavenRun (
                         tool: "mvn-3.6.3", // Tool name from Jenkins configuration
@@ -42,7 +47,6 @@ pipeline {
                         deployerId: "MAVEN_DEPLOYER",
                         resolverId: "MAVEN_RESOLVER"
                 )
-//                sh 'mvn -B -DskipTests clean package'
             }
         }
 //        stage('Unit Test') {
