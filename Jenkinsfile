@@ -2,7 +2,7 @@ pipeline {
     agent {
         docker {
             image 'maven:3.6.3-adoptopenjdk-11'
-            args '-v /root/.m2:/root/.m2'
+            args '-v /root/.m2:/root/.m2 -v /var/run/docker.sock:/var/run/docker.sock'
         }
     }
     environment {
@@ -52,21 +52,21 @@ pipeline {
                 )
             }
         }
-        stage('Unit Test') {
-            steps {
-                rtMavenRun (
-                        pom: 'pom.xml',
-                        goals: 'test',
-                        deployerId: "MAVEN_DEPLOYER",
-                        resolverId: "MAVEN_RESOLVER"
-                )
-            }
-            post {
-                always {
-                    junit 'target/surefire-reports/*.xml'
-                }
-            }
-        }
+//        stage('Unit Test') {
+//            steps {
+//                rtMavenRun (
+//                        pom: 'pom.xml',
+//                        goals: 'test',
+//                        deployerId: "MAVEN_DEPLOYER",
+//                        resolverId: "MAVEN_RESOLVER"
+//                )
+//            }
+//            post {
+//                always {
+//                    junit 'target/surefire-reports/*.xml'
+//                }
+//            }
+//        }
         stage('Build Image') {
             steps {
                 script {
