@@ -6,6 +6,7 @@ pipeline {
         }
     }
     environment {
+        CRED_ID = 'talet-ob-artifactory'
         ARTIFACTORY_SERVER_ID = 'ob-arti'
         ARTIFACTORY_DEPLOYER_RELEASE_REPO = 'onboard-repo-local'
         ARTIFACTORY_DEPLOYER_SNAPSHOT_REPO = 'onboard-repo-local'
@@ -66,5 +67,15 @@ pipeline {
                 }
             }
         }
+        stage('Build Image') {
+            steps {
+                script {
+                    docker.build('35.242.242.155:8082/onboard-docker-repo-virt' + '/onboard-talet-maven')
+                }
+            }
+        }
+//        stage('Push Image') {
+//
+//        }
     }
 }
