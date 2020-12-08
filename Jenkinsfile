@@ -1,5 +1,10 @@
 pipeline {
-    agent any
+    agent {
+        docker {
+            image 'maven:3.6.3-adoptopenjdk-11'
+            args '-v /root/.m2:/root/.m2'
+        }
+    }
     environment {
         CRED_ID = 'talet-ob-artifactory'
         ARTIFACTORY_SERVER_ID = 'ob-arti'
@@ -38,12 +43,6 @@ pipeline {
             }
         }
         stage('Build') {
-            agent {
-                docker {
-                    image 'maven:3.6.3-adoptopenjdk-11'
-                    args '-v /root/.m2:/root/.m2'
-                }
-            }
             steps {
                 rtMavenRun (
                         pom: 'pom.xml',
