@@ -68,12 +68,12 @@ pipeline {
             }
         }
         stage('Build Image') {
-            agent {
-                docker {
-                    image 'docker:dind'
+//            agent {
+//                docker {
+//                    image 'docker:dind'
 //                    args '-v /root/.m2:/root/.m2'
-                }
-            }
+//                }
+//            }
             steps {
                 script {
                     docker.build('35.242.242.155:8082/onboard-docker-repo-virt' + '/onboard-talet-maven')
