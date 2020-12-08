@@ -2,7 +2,7 @@ pipeline {
     agent {
         docker {
             image 'maven:3.6.3-adoptopenjdk-11'
-            args '-v /root/.m2:/root/.m2 -v /var/run/docker.sock:/var/run/docker.sock'
+            args '-v /root/.m2:/root/.m2 -v /var/run/docker.sock:/var/run/docker.sock -v $(which docker):$(which docker)'
         }
     }
     environment {
