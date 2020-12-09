@@ -1,10 +1,5 @@
 pipeline {
-    agent {
-        docker {
-            image 'maven:3.6.3-adoptopenjdk-11'
-            args '-v /root/.m2:/root/.m2 -v /var/run/docker.sock:/var/run/docker.sock -v /usr/bin/docker:/usr/bin/docker'
-        }
-    }
+    agent any
     environment {
         CRED_ID = 'talet-ob-artifactory'
         ARTIFACTORY_SERVER_ID = 'ob-arti'
@@ -16,6 +11,13 @@ pipeline {
     }
     stages {
         stage ('Artifactory configuration') {
+            agent {
+                docker {
+                    reuseNode true
+                    image 'maven:3.6.3-adoptopenjdk-11'
+                    args '-v /root/.m2:/root/.m2 -v /var/run/docker.sock:/var/run/docker.sock -v /usr/bin/docker:/usr/bin/docker'
+                }
+            }
             steps {
                 rtMavenDeployer(
                         id: "MAVEN_DEPLOYER",
@@ -33,6 +35,13 @@ pipeline {
             }
         }
         stage ('Publish BuildInfo') {
+            agent {
+                docker {
+                    reuseNode true
+                    image 'maven:3.6.3-adoptopenjdk-11'
+                    args '-v /root/.m2:/root/.m2 -v /var/run/docker.sock:/var/run/docker.sock -v /usr/bin/docker:/usr/bin/docker'
+                }
+            }
             steps {
                 rtBuildInfo (
                         captureEnv: true
@@ -43,6 +52,13 @@ pipeline {
             }
         }
         stage('Build') {
+            agent {
+                docker {
+                    reuseNode true
+                    image 'maven:3.6.3-adoptopenjdk-11'
+                    args '-v /root/.m2:/root/.m2 -v /var/run/docker.sock:/var/run/docker.sock -v /usr/bin/docker:/usr/bin/docker'
+                }
+            }
             steps {
                 rtMavenRun (
                         pom: 'pom.xml',
