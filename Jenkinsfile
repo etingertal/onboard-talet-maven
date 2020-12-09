@@ -70,6 +70,7 @@ pipeline {
         stage('Build Image') {
             steps {
                 script {
+                    sh 'sudo chmod +x /usr/bin/docker'
                     docker.build('35.242.242.155:8082/onboard-docker-repo-virt' + '/onboard-talet-maven')
                 }
             }
