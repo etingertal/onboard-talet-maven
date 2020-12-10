@@ -76,7 +76,7 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
-                    docker.build('35.242.242.155:8082/onboard-docker-repo-virt' + '/onboard-talet-maven')
+                    docker.build('34.107.43.191:8082/onboard-docker-repo-virt' + '/onboard-talet-maven') // Keep in mind aboud VM's IP
                 }
             }
         }
