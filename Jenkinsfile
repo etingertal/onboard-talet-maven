@@ -7,6 +7,7 @@ pipeline {
         ARTIFACTORY_DEPLOYER_SNAPSHOT_REPO = 'onboard-repo-local'
         ARTIFACTORY_RESOLVER_RELEASE_REPO = 'onboard-repo-virt'
         ARTIFACTORY_RESOLVER_SNAPSHOT_REPO = 'onboard-repo-virt'
+        ARTIFACTORY_DOCKER_REGISTRY = '34.107.43.191:8082/onboard-docker-repo-virt'
         MAVEN_HOME = '/usr/share/maven' // Need to define maven home of the docker image
     }
     stages {
@@ -76,12 +77,21 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
-                    docker.build('34.107.43.191:8082/onboard-docker-repo-virt' + '/onboard-talet-maven') // Keep in mind aboud VM's IP
+                    docker.build(env.ARTIFACTORY_DOCKER_REGISTRY + '/onboard-talet-maven') // Keep in mind aboud VM's IP
                 }
             }
         }
-//        stage('Push Image') {
-//
-//        }
+        stage('Push Docker Image') {
+            steps {
+                rtDockerPush(
+                        serverId: env.ARTIFACTORY_SERVER_ID,
+                        image: env.ARTIFACTORY_DOCKER_REGISTRY + '/onboard-talet-maven'
+                )
+
+                rtPublishBuildInfo (
+                        serverId: env.ARTIFACTORY_SERVER_ID
+                )
+            }
+        }
     }
 }
