@@ -85,7 +85,8 @@ pipeline {
             steps {
                 rtDockerPush(
                         serverId: env.ARTIFACTORY_SERVER_ID,
-                        image: env.ARTIFACTORY_DOCKER_REGISTRY + '/onboard-talet-maven'
+                        image: env.ARTIFACTORY_DOCKER_REGISTRY + '/onboard-talet-maven',
+                        targetRepo: 'onboard-docker-repo-local'
                 )
 
                 rtPublishBuildInfo (
