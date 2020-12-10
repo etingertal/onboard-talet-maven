@@ -50,6 +50,34 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+			<!-- Maven Artifactory Plugin -->
+<!--			<plugin>-->
+<!--				<groupId>org.jfrog.buildinfo</groupId>-->
+<!--				<artifactId>artifactory-maven-plugin</artifactId>-->
+<!--				<version>3.0.0</version>-->
+<!--				<inherited>false</inherited>-->
+<!--				<executions>-->
+<!--					<execution>-->
+<!--						<id>build-info</id>-->
+<!--						<goals>-->
+<!--							<goal>publish</goal>-->
+<!--						</goals>-->
+<!--						<configuration>-->
+<!--							<deployProperties>-->
+<!--								<gradle>awesome</gradle>-->
+<!--								<review.team>qa</review.team>-->
+<!--							</deployProperties>-->
+<!--							<publisher>-->
+<!--								<contextUrl>http://34.107.43.191:8081/artifactory</contextUrl>-->
+<!--								<username>talet</username>-->
+<!--								<password>Password@2!</password>-->
+<!--								<repoKey>onboard-repo-virt</repoKey>-->
+<!--								<snapshotRepoKey>onboard-repo-virt</snapshotRepoKey>-->
+<!--							</publisher>-->
+<!--						</configuration>-->
+<!--					</execution>-->
+<!--				</executions>-->
+<!--			</plugin>-->
 		</plugins>
 	</build>
 
@@ -58,12 +86,12 @@
 		<repository>
 			<id>central</id>
 			<name>f5650b6ad8bb-releases</name>
-			<url>http://35.242.242.155:8081/artifactory/onboard-repo-virt</url>
+			<url>http://ob.arti:8081/artifactory/onboard-repo-virt</url>
 		</repository>
 		<snapshotRepository>
 			<id>snapshots</id>
 			<name>f5650b6ad8bb-snapshots</name>
-			<url>http://35.242.242.155:8081/artifactory/onboard-repo-virt</url>
+			<url>http://ob.arti:8081/artifactory/onboard-repo-virt</url>
 		</snapshotRepository>
 	</distributionManagement>
 
