@@ -68,9 +68,9 @@
 <!--								<review.team>qa</review.team>-->
 <!--							</deployProperties>-->
 <!--							<publisher>-->
-<!--								<contextUrl>http://34.107.43.191:8081/artifactory</contextUrl>-->
+<!--								<contextUrl>http://35.207.183.14:8081/artifactory</contextUrl>-->
 <!--								<username>talet</username>-->
-<!--								<password>Password@2!</password>-->
+<!--								<password>***</password>-->
 <!--								<repoKey>onboard-repo-virt</repoKey>-->
 <!--								<snapshotRepoKey>onboard-repo-virt</snapshotRepoKey>-->
 <!--							</publisher>-->
