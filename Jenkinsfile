@@ -7,7 +7,7 @@ pipeline {
         ARTIFACTORY_DEPLOYER_SNAPSHOT_REPO = 'onboard-repo-local'
         ARTIFACTORY_RESOLVER_RELEASE_REPO = 'onboard-repo-virt'
         ARTIFACTORY_RESOLVER_SNAPSHOT_REPO = 'onboard-repo-virt'
-        ARTIFACTORY_DOCKER_REGISTRY = '34.107.43.191:8082/onboard-docker-repo-virt'
+        ARTIFACTORY_DOCKER_REGISTRY = '35.207.183.14:8081/onboard-docker-repo-virt'
         MAVEN_HOME = '/usr/share/maven' // Need to define maven home of the docker image
     }
     stages {
