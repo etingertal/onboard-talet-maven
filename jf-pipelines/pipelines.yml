@@ -5,7 +5,7 @@ resources:
       gitProvider: github
       path: etingertal/onboard-talet-maven
 pipelines:
-  - name: pipeline_hello_world
+  - name: onboard_talet_maven_pipeline
     configuration:
       environmentVariables:
         readOnly:
