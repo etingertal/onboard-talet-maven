@@ -1,3 +1,9 @@
+resources:
+  - name: taletRepo
+    type: GitRepo
+    configuration:
+      gitProvider: github
+      path: etingertal/onboard-talet-maven
 pipelines:
   - name: pipeline_hello_world
     configuration:
