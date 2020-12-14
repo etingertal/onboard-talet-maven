@@ -1,0 +1,10 @@
+version: 1
+type: maven
+resolver:
+  snapshotRepo: onboard-repo-virt
+  releaseRepo: onboard-repo-virt
+  serverID: ob_artifactory
+deployer:
+  snapshotRepo: onboard-repo-local
+  releaseRepo: onboard-repo-local
+  serverID: ob_artifactory

@@ -18,6 +18,9 @@
 		<java.version>11</java.version>
 		<maven.compiler.source>11</maven.compiler.source>
 		<maven.compiler.target>11</maven.compiler.target>
+		<username>${env.int_MyArtifactory_user}</username>
+		<password>${env.int_MyArtifactory_apikey}</password>
+		<artifactoryUrl>${env.int_MyArtifactory_url}</artifactoryUrl>
 	</properties>
 
 	<dependencies>
@@ -51,33 +54,36 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
 			<!-- Maven Artifactory Plugin -->
-<!--			<plugin>-->
-<!--				<groupId>org.jfrog.buildinfo</groupId>-->
-<!--				<artifactId>artifactory-maven-plugin</artifactId>-->
-<!--				<version>3.0.0</version>-->
-<!--				<inherited>false</inherited>-->
-<!--				<executions>-->
-<!--					<execution>-->
-<!--						<id>build-info</id>-->
-<!--						<goals>-->
-<!--							<goal>publish</goal>-->
-<!--						</goals>-->
-<!--						<configuration>-->
-<!--							<deployProperties>-->
-<!--								<gradle>awesome</gradle>-->
-<!--								<review.team>qa</review.team>-->
-<!--							</deployProperties>-->
-<!--							<publisher>-->
+			<plugin>
+				<groupId>org.jfrog.buildinfo</groupId>
+				<artifactId>artifactory-maven-plugin</artifactId>
+				<version>3.0.0</version>
+				<inherited>false</inherited>
+				<executions>
+					<execution>
+						<id>build-info</id>
+						<goals>
+							<goal>publish</goal>
+						</goals>
+						<configuration>
+							<deployProperties>
+								<gradle>awesome</gradle>
+								<review.team>qa</review.team>
+							</deployProperties>
+							<publisher>
 <!--								<contextUrl>http://35.207.183.14:8081/artifactory</contextUrl>-->
 <!--								<username>talet</username>-->
 <!--								<password>***</password>-->
-<!--								<repoKey>onboard-repo-virt</repoKey>-->
-<!--								<snapshotRepoKey>onboard-repo-virt</snapshotRepoKey>-->
-<!--							</publisher>-->
-<!--						</configuration>-->
-<!--					</execution>-->
-<!--				</executions>-->
-<!--			</plugin>-->
+								<contextUrl>${artifactoryUrl}</contextUrl>
+								<username>${username}</username>
+								<password>${password}</password>
+								<repoKey>onboard-repo-virt</repoKey>
+								<snapshotRepoKey>onboard-repo-virt</snapshotRepoKey>
+							</publisher>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
 		</plugins>
 	</build>
 
