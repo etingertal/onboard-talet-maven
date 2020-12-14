@@ -11,7 +11,7 @@ pipelines:
         readOnly:
           MY_MESSAGE: '"Hello World!"'
     steps:
-      - name: bld_backend
+      - name: mvn_build
         type: MvnBuild
         configuration:
           sourceLocation: .
@@ -19,9 +19,9 @@ pipelines:
           configFileLocation: .
           configFileName: mvn-art-config
           inputResources:
-            - name: be_gitRepo
+            - name: taletRepo
           integrations:
-            - name: demo_art
+            - name: ob_artifactory
           runtime:
             type: image
             image:
