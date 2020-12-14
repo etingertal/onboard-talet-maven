@@ -1,0 +1,6 @@
+resources:
+  - name: taletRepo
+    type: GitRepo
+    configuration:
+      gitProvider: github               # Change to your integration
+      path: etingertal/onboard-talet-maven                 # Change to your repo
