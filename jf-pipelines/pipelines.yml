@@ -29,4 +29,4 @@ pipelines:
           onStart:
             - javac -version
             - mvn --version
-            - echo ${res_src_code_onboard_talet_maven_pipeline_resourcePath}
+            - echo ${res_taletRepo_resourcePath}
