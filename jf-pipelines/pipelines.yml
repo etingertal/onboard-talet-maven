@@ -5,13 +5,13 @@ resources:
       gitProvider: github
       path: etingertal/onboard-talet-maven
   - name: taletImage
-      type: Image
-      configuration:
-        registry: ob_artifactory
-        sourceRepository: onboard-docker-repo-local
-        imageName: 35.207.183.14:8082/onboard-docker-repo-virt/onboard-talet-maven  # < -- replace with your image path and name
-        imageTag: ${run_number}
-        autoPull: true
+    type: Image
+    configuration:
+      registry: ob_artifactory
+      sourceRepository: onboard-docker-repo-local
+      imageName: 35.207.183.14:8082/onboard-docker-repo-virt/onboard-talet-maven  # < -- replace with your image path and name
+      imageTag: ${run_number}
+      autoPull: true
 pipelines:
   - name: onboard_talet_maven_pipeline
     steps:
