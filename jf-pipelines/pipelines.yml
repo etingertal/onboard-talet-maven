@@ -11,7 +11,7 @@ pipelines:
         type: MvnBuild
         configuration:
           sourceLocation: .
-          mvnCommand: clean install -ntp
+          mvnCommand: -B -DskipTests clean package -ntp
           configFileLocation: .
           configFileName: mvn-art-config
           inputResources:
@@ -30,3 +30,21 @@ pipelines:
             - javac -version
             - mvn --version
             - ls ${res_taletRepo_resourcePath}
+      - name: mvn_test
+          type: MvnBuild
+          configuration:
+            sourceLocation: .
+            mvnCommand: test -ntp
+            configFileLocation: .
+            configFileName: mvn-art-config
+            inputResources:
+              - name: taletRepo
+            integrations:
+              - name: ob_artifactory
+            runtime:
+              type: image
+              image:
+                auto:
+                  language: java
+                  versions:
+                    - "11"
