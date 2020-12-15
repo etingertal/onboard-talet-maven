@@ -29,5 +29,4 @@ pipelines:
           onStart:
             - javac -version
             - mvn --version
-            - ls -ltr
-            - ls workspace/
+            - echo ${res_src_code_onboard_talet_maven_pipeline_resourcePath}
