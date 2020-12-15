@@ -30,3 +30,4 @@ pipelines:
             - javac -version
             - mvn --version
             - ls -ltr
+            - ls workspace/
