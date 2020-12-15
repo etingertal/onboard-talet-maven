@@ -30,7 +30,7 @@ pipelines:
             - javac -version
             - mvn --version
             - ls ${res_taletRepo_resourcePath}
-      - name: mvn_test
+      - name: mvn_unit_test
           type: MvnBuild
           configuration:
             sourceLocation: .
