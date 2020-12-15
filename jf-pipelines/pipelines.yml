@@ -29,5 +29,4 @@ pipelines:
           onStart:
             - javac -version
             - mvn --version
-            - echo ${res_taletRepo_resourcePath}
             - ls ${res_taletRepo_resourcePath}
