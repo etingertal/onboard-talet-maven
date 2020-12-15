@@ -48,6 +48,7 @@ pipelines:
             - javac -version
             - mvn --version
             - ls ${res_taletRepo_resourcePath}
+          onSuccess:
             - add_run_files target/ mvn-target
       - name: mvn_unit_test
         type: MvnBuild
