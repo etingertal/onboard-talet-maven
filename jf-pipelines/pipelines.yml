@@ -75,3 +75,6 @@ pipelines:
             - name: taletRepo
           outputResources:
             - name: taletImage
+        execution:
+          onStart:
+            - ls ${res_taletRepo_resourcePath}
