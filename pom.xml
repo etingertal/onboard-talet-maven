@@ -18,9 +18,6 @@
 		<java.version>11</java.version>
 		<maven.compiler.source>11</maven.compiler.source>
 		<maven.compiler.target>11</maven.compiler.target>
-		<username>${env.int_MyArtifactory_user}</username>
-		<password>${env.int_MyArtifactory_apikey}</password>
-		<artifactoryUrl>${env.int_MyArtifactory_url}</artifactoryUrl>
 	</properties>
 
 	<dependencies>
@@ -91,12 +88,12 @@
 	<distributionManagement>
 		<repository>
 			<id>central</id>
-			<name>f5650b6ad8bb-releases</name>
+			<name>onboard-repo-virt-releases</name>
 			<url>http://ob.arti:8081/artifactory/onboard-repo-virt</url>
 		</repository>
 		<snapshotRepository>
 			<id>snapshots</id>
-			<name>f5650b6ad8bb-snapshots</name>
+			<name>onboard-repo-virt-snapshots</name>
 			<url>http://ob.arti:8081/artifactory/onboard-repo-virt</url>
 		</snapshotRepository>
 	</distributionManagement>

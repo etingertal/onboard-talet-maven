@@ -1,0 +1,16 @@
+<settings>
+    <profiles>
+        <profile>
+            <id>artifactory-plugin-properties</id>
+            <properties>
+                <username>${env.int_MyArtifactory_user}</username>
+                <password>${env.int_MyArtifactory_apikey}</password>
+                <artifactoryUrl>${env.int_MyArtifactory_url}</artifactoryUrl>
+            </properties>
+        </profile>
+    </profiles>
+
+    <activeProfiles>
+        <activeProfile>artifactory-plugin-properties</activeProfile>
+    </activeProfiles>
+</settings>
