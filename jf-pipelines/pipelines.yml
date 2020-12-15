@@ -50,3 +50,15 @@ pipelines:
                 language: java
                 versions:
                   - "11"
+      - name: docker_build
+          type: DockerBuild
+          configuration:
+            affinityGroup: affinityGroup1
+            dockerFileLocation: .
+            dockerFileName: Dockerfile
+            dockerImageName: 35.207.183.14:8082/onboard-docker-repo-virt/onboard-talet-maven
+            dockerImageTag: ${run_number}
+            integrations:
+              - name: ob_artifactory
+            inputResources:
+              - name: taletRepo
