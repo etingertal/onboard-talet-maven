@@ -78,3 +78,4 @@ pipelines:
         execution:
           onStart:
             - ls ${res_taletRepo_resourcePath}
+            - ls -ltr
