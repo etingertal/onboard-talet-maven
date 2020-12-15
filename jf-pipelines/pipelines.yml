@@ -6,10 +6,6 @@ resources:
       path: etingertal/onboard-talet-maven
 pipelines:
   - name: onboard_talet_maven_pipeline
-    configuration:
-      environmentVariables:
-        readOnly:
-          MY_MESSAGE: '"Hello World!"'
     steps:
       - name: mvn_build
         type: MvnBuild
@@ -33,3 +29,4 @@ pipelines:
           onStart:
             - javac -version
             - mvn --version
+            - ls -ltr
