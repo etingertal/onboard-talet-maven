@@ -4,6 +4,13 @@ resources:
     configuration:
       gitProvider: github
       path: etingertal/onboard-talet-maven
+  # Build info for mvn
+  - name: taletBuildInfo
+    type: BuildInfo
+    configuration:
+      sourceArtifactory: ob_artifactory
+      buildName: onboard_talet_maven
+      buildNumber: ${run_number}
   - name: taletImage
     type: Image
     configuration:
@@ -22,8 +29,11 @@ pipelines:
           mvnCommand: -B -DskipTests clean install -ntp
           configFileLocation: .
           configFileName: mvn-art-config
+          autoPublishBuildInfo: true
           inputResources:
             - name: taletRepo
+          outputResources:
+            - name: taletBuildInfo
           integrations:
             - name: ob_artifactory
           runtime:
@@ -38,6 +48,7 @@ pipelines:
             - javac -version
             - mvn --version
             - ls ${res_taletRepo_resourcePath}
+            - add_run_files target/ mvn-target
       - name: mvn_unit_test
         type: MvnBuild
         configuration:
