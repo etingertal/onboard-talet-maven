@@ -19,7 +19,7 @@ pipelines:
         type: MvnBuild
         configuration:
           sourceLocation: .
-          mvnCommand: -B -DskipTests clean package -ntp
+          mvnCommand: -B -DskipTests clean install -ntp
           configFileLocation: .
           configFileName: mvn-art-config
           inputResources:
