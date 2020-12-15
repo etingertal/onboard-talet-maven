@@ -37,6 +37,8 @@ pipelines:
           mvnCommand: test -ntp
           configFileLocation: .
           configFileName: mvn-art-config
+          inputSteps:
+            - name: mvn_build
           inputResources:
             - name: taletRepo
           integrations:
