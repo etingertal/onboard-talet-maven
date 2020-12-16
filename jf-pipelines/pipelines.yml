@@ -89,7 +89,7 @@ pipelines:
             - name: taletImage
         execution:
           onStart:
-            - jfrog rt dl onboard-repo-local --build=onboard_talet_maven_build --build-number=${run_number}  --flat=true
+            - jfrog rt dl onboard-repo-local --build=onboard_talet_maven_build  --flat=true
             - ls -ltra
             - mkdir target
             - cp *.jar target/
