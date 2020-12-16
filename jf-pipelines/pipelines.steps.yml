@@ -34,7 +34,8 @@ pipelines:
             - mvn --version
             - ls ${res_taletRepo_resourcePath}
           onSuccess:
-            - add_run_variables artifactVersion=`cat ${res_taletRepo_resourcePath}/pom.xml | grep '^\t<version>.*</version>$' | awk -F'[><]' '{print $3}' `
+#            - add_run_variables artifactVersion=`cat ${res_taletRepo_resourcePath}/pom.xml | grep '^\t<version>.*</version>$' | awk -F'[><]' '{print $3}' `
+            - add_run_variables artifactVersion=`mvn -q -Dexec.executable=echo -Dexec.args='${project.version}' --non-recursive exec:exec `
             - echo ${artifactVersion}
       - name: mvn_unit_test
         type: MvnBuild
