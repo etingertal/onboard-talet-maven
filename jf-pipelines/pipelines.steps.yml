@@ -78,7 +78,7 @@ pipelines:
 #            - jfrog rt dl ${mvnLocalRepo} --build=onboard_talet_maven_pipeline --flat=true # JFrog CLI - build name == pipeline name
 #            - ls -ltra ${res_taletRepo_resourcePath}
             - cd ${res_taletMavenFileSpec_resourcePath}
-            - ls -ltra target/com/jfrog/${artifactVersion}/
+            - ls -ltra target/com/jfrog/onboard-talet-maven/${artifactVersion}/
 #            - mkdir target
 #            - cp *.jar target/
             - mv -v target ${res_taletRepo_resourcePath}
