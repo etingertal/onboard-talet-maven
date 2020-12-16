@@ -78,10 +78,10 @@ pipelines:
             - name: taletImage
         execution:
           onStart:
-#            - jfrog rt dl ${mvnLocalRepo} --build=onboard_talet_maven_pipeline --flat=true # JFrog CLI - build name == pipeline name
-#            - cd ${res_taletMavenFileSpec_resourcePath}  # JFrog CLI
+            - jfrog rt dl ${mvnLocalRepo} --build=onboard_talet_maven_pipeline --flat=true # JFrog CLI - build name == pipeline name
+            - cd ${res_taletMavenFileSpec_resourcePath}  # JFrog CLI
 #            - ls -ltra ${res_taletRepo_resourcePath}
-            - cd ${res_taletMavenFileSpec_resourcePath}/target/com/jfrog/onboard-talet-maven/${artifactVersion}/  # FileSpec
+#            - cd ${res_taletMavenFileSpec_resourcePath}/target/com/jfrog/onboard-talet-maven/${artifactVersion}/  # FileSpec
             - mkdir target
             - cp *.jar target/
             - mv -v target ${res_taletRepo_resourcePath}
