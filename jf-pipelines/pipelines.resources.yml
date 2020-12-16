@@ -1,0 +1,21 @@
+resources:
+  - name: taletRepo
+    type: GitRepo
+    configuration:
+      gitProvider: github
+      path: etingertal/onboard-talet-maven
+  # Build info for mvn
+  - name: taletBuildInfo
+    type: BuildInfo
+    configuration:
+      sourceArtifactory: ob_artifactory
+      buildName: onboard_talet_maven_build
+      buildNumber: ${run_number}
+  - name: taletImage
+    type: Image
+    configuration:
+      registry: ob_artifactory
+      sourceRepository: onboard-docker-repo-local
+      imageName: 35.207.183.14:8082/onboard-docker-repo-virt/onboard-talet-maven  # < -- replace with your image path and name
+      imageTag: ${run_number}
+      autoPull: true
