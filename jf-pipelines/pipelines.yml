@@ -21,6 +21,12 @@ resources:
       autoPull: true
 pipelines:
   - name: onboard_talet_maven_pipeline
+    configuration:
+      environmentVariables:
+        readOnly:
+          mvnLocalRepo: onboard-repo-local
+          artifactoryIp: 35.207.183.14:8082
+          dockerVirtualRepo: onboard-docker-repo-virt
     steps:
       - name: mvn_build
         type: MvnBuild
@@ -76,7 +82,7 @@ pipelines:
           affinityGroup: affinityGroup1
           dockerFileLocation: .
           dockerFileName: Dockerfile
-          dockerImageName: 35.207.183.14:8082/onboard-docker-repo-virt/onboard-talet-maven
+          dockerImageName: ${artifactoryIp}/${dockerVirtualRepo}/onboard-talet-maven
           dockerImageTag: ${run_number}
           inputSteps:
             - name: mvn_build
@@ -89,11 +95,11 @@ pipelines:
             - name: taletImage
         execution:
           onStart:
-            - jfrog rt dl onboard-repo-local --build=onboard_talet_maven_pipeline  --flat=true # build name == pipeline name
-            - ls -ltra
+            - jfrog rt dl ${mvnLocalRepo} --build=onboard_talet_maven_pipeline  --flat=true # build name == pipeline name
+#            - ls -ltra
             - mkdir target
             - cp *.jar target/
-            - pwd
+#            - pwd
             - mv -v target ${res_taletRepo_resourcePath}
-            - ls ${res_taletRepo_resourcePath}
+#            - ls ${res_taletRepo_resourcePath}
 #            - ls -ltr
