@@ -68,13 +68,15 @@ pipelines:
             - name: ob_artifactory
           inputResources:
             - name: taletRepo
+            - name: taletMavenFileSpec
           outputResources:
             - name: taletImage
         execution:
           onStart:
-            - jfrog rt dl ${mvnLocalRepo} --build=onboard_talet_maven_pipeline  --flat=true # build name == pipeline name
-#            - ls -ltra
-            - mkdir target
+#            - jfrog rt dl ${mvnLocalRepo} --build=onboard_talet_maven_pipeline  --flat=true # build name == pipeline name
+            - ls -ltra
+            - ls -ltra ${res_taletRepo_resourcePath}
+#            - mkdir target
             - cp *.jar target/
             - mv -v target ${res_taletRepo_resourcePath}
       - name: docker_push

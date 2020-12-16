@@ -19,3 +19,10 @@ resources:
       imageName: 35.207.183.14:8082/onboard-docker-repo-virt/onboard-talet-maven  # < -- replace with your image path and name
       imageTag: ${run_number}
       autoPull: true
+  - name: taletMavenFileSpec
+      type: FileSpec
+      configuration:
+        sourceArtifactory: ob_artifactory
+        pattern: onboard-repo-local   # required, either this or aql
+        build: onboard_talet_maven_pipeline   # required, either this or pattern
+        target: target/   # required to upload files
