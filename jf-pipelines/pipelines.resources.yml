@@ -20,9 +20,9 @@ resources:
       imageTag: ${run_number}
       autoPull: true
   - name: taletMavenFileSpec
-      type: FileSpec
-      configuration:
-        sourceArtifactory: ob_artifactory
-        pattern: onboard-repo-local   # required, either this or aql
-        build: onboard_talet_maven_pipeline   # required, either this or pattern
-        target: target/   # required to upload files
+    type: FileSpec
+    configuration:
+      sourceArtifactory: ob_artifactory
+      pattern: onboard-repo-local   # required, either this or aql
+      build: onboard_talet_maven_pipeline   # required, either this or pattern
+      target: target/   # required to upload files
