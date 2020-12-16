@@ -48,8 +48,8 @@ pipelines:
             - javac -version
             - mvn --version
             - ls ${res_taletRepo_resourcePath}
-          onSuccess:
-            - add_run_files target/ mvn-target
+#          onSuccess:
+#            - add_run_files target/ mvn-target
       - name: mvn_unit_test
         type: MvnBuild
         configuration:
@@ -89,7 +89,8 @@ pipelines:
             - name: taletImage
         execution:
           onStart:
-            - jfrog rt dl onboard-repo-local --build=onboard_talet_maven_build  --flat=true
+            - jfrog rt dl onboard-repo-local --build=onboard_talet_maven_build --build-number=${run_number}  --flat=true
+            - ls -ltra
             - mkdir target
             - cp *.jar target/
             - pwd
