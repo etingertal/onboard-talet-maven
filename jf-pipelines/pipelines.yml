@@ -9,7 +9,7 @@ resources:
     type: BuildInfo
     configuration:
       sourceArtifactory: ob_artifactory
-      buildName: onboard_talet_maven
+      buildName: onboard_talet_maven_build
       buildNumber: ${run_number}
   - name: taletImage
     type: Image
@@ -26,7 +26,7 @@ pipelines:
         type: MvnBuild
         configuration:
           sourceLocation: .
-          mvnCommand: -B -DskipTests clean install -ntp
+          mvnCommand: -B -DskipTests clean install -ntp -s settings.xml
           configFileLocation: .
           configFileName: mvn-art-config
           autoPublishBuildInfo: true
@@ -89,5 +89,6 @@ pipelines:
             - name: taletImage
         execution:
           onStart:
+            - jfrog rt dl onboard-repo-local --build=onboard_talet_maven_build  --flat=true
             - ls ${res_taletRepo_resourcePath}
             - ls -ltr
