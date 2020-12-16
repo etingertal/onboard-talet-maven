@@ -72,13 +72,12 @@ pipelines:
             - name: ob_artifactory
           inputResources:
             - name: taletRepo
-            - name: taletMavenFileSpec
+#            - name: taletMavenFileSpec  # FileSpec
           outputResources:
             - name: taletImage
         execution:
           onStart:
             - jfrog rt dl ${mvnLocalRepo} --build=onboard_talet_maven_pipeline --flat=true # JFrog CLI - build name == pipeline name
-            - cd ${res_taletMavenFileSpec_resourcePath}  # JFrog CLI
 #            - ls -ltra ${res_taletRepo_resourcePath}
 #            - cd ${res_taletMavenFileSpec_resourcePath}/target/com/jfrog/onboard-talet-maven/${artifactVersion}/  # FileSpec
             - mkdir target
