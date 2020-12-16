@@ -34,7 +34,8 @@ pipelines:
             - mvn --version
             - ls ${res_taletRepo_resourcePath}
           onSuccess:
-            - add_run_variables artifactVersion=`sed -n "s/[[:space:]]*<version>\(.*\)<\/version>/\1/p" ${res_src_code_backapp_mvn_resourcePath}/pom.xml `
+            - add_run_variables artifactVersion=`sed -n "s/[[:space:]]*<version>\(.*\)<\/version>/\1/p" ${res_taletRepo_resourcePath}/pom.xml `
+            - echo ${artifactVersion}
       - name: mvn_unit_test
         type: MvnBuild
         configuration:
