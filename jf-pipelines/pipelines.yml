@@ -103,3 +103,14 @@ pipelines:
             - mv -v target ${res_taletRepo_resourcePath}
 #            - ls ${res_taletRepo_resourcePath}
 #            - ls -ltr
+      - name: docker_push
+        type: DockerPush
+        configuration:
+          affinityGroup: affinityGroup1
+          targetRepository: ${dockerVirtualRepo}
+          inputSteps:
+            - name: docker_build
+          integrations:
+            - name: ob_artifactory
+          outputResources:
+            - name: taletImage
