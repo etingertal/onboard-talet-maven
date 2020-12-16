@@ -24,5 +24,6 @@ resources:
     configuration:
       sourceArtifactory: ob_artifactory
       pattern: onboard-repo-local   # required, either this or aql
-      build: onboard_talet_maven_pipeline   # required, either this or pattern
+      buildName: onboard_talet_maven_pipeline   # required, either this or pattern
+      buildNumber: ${run_number}
       target: target/   # required to upload files
