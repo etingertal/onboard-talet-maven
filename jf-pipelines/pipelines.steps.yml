@@ -73,12 +73,12 @@ pipelines:
             - name: taletImage
         execution:
           onStart:
-#            - jfrog rt dl ${mvnLocalRepo} --build=onboard_talet_maven_pipeline  --flat=true # build name == pipeline name
-            - ls -ltra ${res_taletRepo_resourcePath}
+#            - jfrog rt dl ${mvnLocalRepo} --build=onboard_talet_maven_pipeline --flat=true # JFrog CLI - build name == pipeline name
+#            - ls -ltra ${res_taletRepo_resourcePath}
             - cd ${res_taletMavenFileSpec_resourcePath}
-            - ls -ltra
-            - mkdir target
-            - cp *.jar target/
+            - ls -ltra target/
+#            - mkdir target
+#            - cp *.jar target/
             - mv -v target ${res_taletRepo_resourcePath}
       - name: docker_push
         type: DockerPush
