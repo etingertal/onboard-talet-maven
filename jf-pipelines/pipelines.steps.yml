@@ -92,5 +92,7 @@ pipelines:
             - name: docker_build
           integrations:
             - name: ob_artifactory
+          inputResources:
+            - name: taletImage
           outputResources:
             - name: taletImage
