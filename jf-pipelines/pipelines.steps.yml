@@ -94,5 +94,5 @@ pipelines:
             - name: ob_artifactory
           inputResources:
             - name: taletImage
-          outputResources:
-            - name: taletImage
+#          outputResources:
+#            - name: taletImage
