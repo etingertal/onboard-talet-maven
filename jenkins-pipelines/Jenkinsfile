@@ -98,6 +98,8 @@ pipeline {
             steps {
                 xrayScan (
                         serverId: env.ARTIFACTORY_SERVER_ID,
+                        buildName: 'onboard-talet-maven :: main',
+                        buildNumber: env.BUILD_NUMBER,
                         failBuild: false
                 )
             }
