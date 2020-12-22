@@ -101,5 +101,7 @@ pipelines:
         type: XrayScan
         configuration:
           failOnScan: false
+          inputSteps:
+            - name: docker_push
           inputResources:
             - name: taletBuildInfo
