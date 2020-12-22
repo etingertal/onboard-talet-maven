@@ -74,16 +74,6 @@ pipeline {
                 }
             }
         }
-        stage('XRay Scan') { // XRAY
-            steps {
-                xrayScan (
-                        serverId: env.ARTIFACTORY_SERVER_ID,
-//                        buildName: env.JOB_NAME,
-//                        buildNumber: env.BUILD_NUMBER,
-                        failBuild: false
-                )
-            }
-        }
         stage('Build Docker Image') {
             steps {
                 script {
@@ -101,6 +91,14 @@ pipeline {
 
                 rtPublishBuildInfo (
                         serverId: env.ARTIFACTORY_SERVER_ID
+                )
+            }
+        }
+        stage('XRay Scan') { // XRAY
+            steps {
+                xrayScan (
+                        serverId: env.ARTIFACTORY_SERVER_ID,
+                        failBuild: false
                 )
             }
         }
