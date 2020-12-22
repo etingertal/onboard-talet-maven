@@ -95,11 +95,11 @@ pipelines:
             - name: ob_artifactory
           inputResources:
             - name: taletImage
+          outputResources:
+            - name: taletBuildInfo
       - name: xray_scan
         type: XrayScan
         configuration:
           failOnScan: false
           inputResources:
-            - name: taletBuildInfo
-          outputResources:
             - name: taletBuildInfo
