@@ -88,6 +88,7 @@ pipelines:
         configuration:
           affinityGroup: affinityGroup1
           targetRepository: ${dockerVirtualRepo}
+          autoPublishBuildInfo: true
           inputSteps:
             - name: docker_build
           integrations:
@@ -99,4 +100,6 @@ pipelines:
         configuration:
           failOnScan: false
           inputResources:
+            - name: taletBuildInfo
+          outputResources:
             - name: taletBuildInfo
