@@ -14,7 +14,7 @@ pipelines:
           mvnCommand: -B -DskipTests clean install -ntp -s settings.xml
           configFileLocation: .
           configFileName: mvn-art-config
-          autoPublishBuildInfo: true
+          autoPublishBuildInfo: false
           inputResources:
             - name: taletRepo
           outputResources:
