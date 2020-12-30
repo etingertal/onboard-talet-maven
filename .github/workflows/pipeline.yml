@@ -17,11 +17,12 @@ jobs:
     steps:
 
     - uses: actions/checkout@v2
-    - uses: jfrog/setup-jfrog-cli@v1
+    - name: JFrog CLI Config
+      uses: jfrog/setup-jfrog-cli@v1
       env:
         JF_ARTIFACTORY_1: ${{ secrets.artifactory_token_1 }}
-    - name: JFrog CLI Config
-    - run: |
+    - name: JFrog CLI Ping
+      run: |
         # Ping the server
         jfrog rt ping
     - name: Set up JDK 1.8
