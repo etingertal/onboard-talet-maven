@@ -18,10 +18,11 @@ jobs:
 
     - uses: actions/checkout@v2
     - name: JFrog CLI Config
-    - uses: jfrog/setup-jfrog-cli@v1
+      uses: jfrog/setup-jfrog-cli@v1
       env:
         JF_ARTIFACTORY_1: ${{ secrets.artifactory_token_1 }}
-    - run: |
+    - name: JFrog CLI Ping
+      run: |
         # Ping the server
         jfrog rt ping
     - name: Set up JDK 111
