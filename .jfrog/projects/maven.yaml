@@ -2,11 +2,11 @@ version: 1
 type: maven
 resolver:
 #  serverId: ob-arti
-  serverId: local-1
+  serverId: export
   snapshotRepo: onboard-repo-virt
   releaseRepo: onboard-repo-virt
 deployer:
 #  serverId: ob-arti
-  serverId: local-1
+  serverId: export
   snapshotRepo: onboard-repo-local
   releaseRepo: onboard-repo-local
