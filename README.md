@@ -9,6 +9,7 @@ This repository is a maven spring boot basic application as a playground for CI
 * Dockerfile - spring boot basic for docker build
 * Jenkinsfile - declarative CI pipeline for jenkins  
 * pipelines.*.yml - CI pipeline defintion for JFrog Pipelines
+* .github/workflows/pipeline.yml
 
 ## Integrations
 
@@ -16,4 +17,5 @@ This repository is a maven spring boot basic application as a playground for CI
     * Artifactory
     * Pipelines
 * Jenkins
+* GitHub Actions
  
