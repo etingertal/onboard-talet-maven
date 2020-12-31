@@ -45,3 +45,6 @@ jobs:
       run: |
         jfrog rt bce
         jfrog rt bp
+    - name: Scan with XRay
+      run: |
+        jfrog rt bs
