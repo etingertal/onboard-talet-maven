@@ -2,9 +2,11 @@ version: 1
 type: maven
 resolver:
 #  serverId: ob-arti
+  serverId: JF_ARTIFACTORY_1
   snapshotRepo: onboard-repo-virt
   releaseRepo: onboard-repo-virt
 deployer:
 #  serverId: ob-arti
+  serverId: JF_ARTIFACTORY_1
   snapshotRepo: onboard-repo-local
   releaseRepo: onboard-repo-local
