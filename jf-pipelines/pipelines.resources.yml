@@ -16,7 +16,7 @@ resources:
     configuration:
       registry: ob_artifactory
       sourceRepository: onboard-docker-repo-local
-      imageName: 35.207.183.14:8082/onboard-docker-repo-virt/onboard-talet-maven  # < -- replace with your image path and name
+      imageName: 35.207.143.222:8082/onboard-docker-repo-virt/onboard-talet-maven  # < -- replace with your image path and name
       imageTag: ${run_number}
       autoPull: true
   - name: taletMavenFileSpec

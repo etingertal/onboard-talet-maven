@@ -4,7 +4,7 @@ pipelines:
       environmentVariables:
         readOnly:
           mvnLocalRepo: onboard-repo-local
-          artifactoryIp: 35.207.183.14:8082
+          artifactoryIp: 35.207.143.222:8082
           dockerVirtualRepo: onboard-docker-repo-virt
     steps:
       - name: mvn_build
