@@ -89,9 +89,9 @@ pipeline {
                         targetRepo: 'onboard-docker-repo-local'
                 )
 
-                rtPublishBuildInfo (
-                        serverId: env.ARTIFACTORY_SERVER_ID
-                )
+//                rtPublishBuildInfo (
+//                        serverId: env.ARTIFACTORY_SERVER_ID
+//                )
             }
         }
         stage('XRay Scan') { // XRAY
