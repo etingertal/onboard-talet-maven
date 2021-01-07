@@ -77,7 +77,7 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
-                    docker.build(env.ARTIFACTORY_DOCKER_REGISTRY + '/onboard-talet-maven') // Keep in mind about VM's IP
+                    docker.build(env.ARTIFACTORY_DOCKER_REGISTRY + '/onboard-talet-maven:' + env.BUILD_NUMBER) // Keep in mind about VM's IP
                 }
             }
         }
@@ -85,7 +85,7 @@ pipeline {
             steps {
                 rtDockerPush(
                         serverId: env.ARTIFACTORY_SERVER_ID,
-                        image: env.ARTIFACTORY_DOCKER_REGISTRY + '/onboard-talet-maven',
+                        image: env.ARTIFACTORY_DOCKER_REGISTRY + '/onboard-talet-maven:' + env.BUILD_NUMBER,
                         targetRepo: 'onboard-docker-repo-local'
                 )
 
