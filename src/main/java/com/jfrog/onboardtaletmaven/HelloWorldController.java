@@ -12,6 +12,6 @@ public class HelloWorldController {
 
     @GetMapping("/hello-world")
     public @ResponseBody ResponseEntity<String> helloWorld() {
-        return new ResponseEntity<String>("Hello world!", HttpStatus.OK);
+        return new ResponseEntity<String>("Hello world from Tal!", HttpStatus.OK);
     }
 }
