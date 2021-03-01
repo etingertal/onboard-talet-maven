@@ -3,10 +3,10 @@ type: maven
 resolver:
 #  serverId: ob-arti
   serverId: staging-emea # GitHub Actions serverID
-  snapshotRepo: onboard-repo-virt
-  releaseRepo: onboard-repo-virt
+  snapshotRepo: talet-maven
+  releaseRepo: talet-maven
 deployer:
 #  serverId: ob-arti
   serverId: staging-emea # GitHub Actions serverID
-  snapshotRepo: onboard-repo-local
-  releaseRepo: onboard-repo-local
+  snapshotRepo: talet-maven-local
+  releaseRepo: talet-maven-local
