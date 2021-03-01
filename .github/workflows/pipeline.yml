@@ -3,7 +3,7 @@
 
 # jfrog c == staging-emea
 
-name: Java CI with Maven and Artifactory
+name: talet-maven-build
 
 on:
   push:
